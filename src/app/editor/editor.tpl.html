@@ -1,1 +1,25 @@
-<h3>课程编辑后台: " Hello World! "</h3>
+<div layout="row" layout-align="center center">
+    <div ng-repeat="tab in tabs" style="margin-right: 10px" >
+        <md-toolbar>
+            <small class="md-toolbar-tools">
+                <span>{{tab.title}}</span>
+            </small>
+        </md-toolbar>
+        <md-content style="height: 500px;border-right:solid 1px #004444;border-left:solid 1px #004444">
+            <md-card ng-repeat="chapter in chapters">
+                <div layout="row" layout-align="center center">
+                    <img ng-src="{{chapter.url}}" class="img-polaroid" ph-img="80x80" alt="chapter._id"/>
+                    <div layout="column" layout-margin>
+                        <h3>{{chapter.name}}</h3>
+                        <div layout="row" layout-sm="column" layout-align="center center">
+                            <md-button class="md-raised" style="margin-right: 5px">编辑</md-button>
+                            <md-button class="md-raised md-primary" style="margin-right: 5px">发布</md-button>
+                            <md-button class="md-raised md-warn" style="margin-right: 5px">删除</md-button>
+                            <div class="label">raised</div>
+                        </div>
+                    </div>
+                </div>
+            </md-card>
+        </md-content>
+    </div>
+</div>
