@@ -6,31 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- font awesome from BootstrapCDN -->
-<!--
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
--->
+    <!--
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    -->
 
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>"/>
+    <% }); %>
 
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+    <script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
 </head>
 <body>
 <div class="container">
     <div class="navbar navbar-default">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
-                    ng-click="menuCollapsed = ! menuCollapsed">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <div class="navbar-brand">
-                Course Builder
+                <strong>Course Builder</strong>
                 <small>
-                    <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
+                    <a style="color:white" href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
                         v<%= version %>
                     </a>
                 </small>
@@ -53,15 +48,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li style="display: inline!important; padding: 0px">
-                    <a href="#/" style="color:blue;display: inline-block!important; margin:1px!important;">首页</a>
-                    <a style="color:#808080;display: inline-block!important; width: auto!important;"> > > </a>
-
-                    <a href="#/" style="color:blue;display: inline-block!important; margin:1px!important;">下一页</a>
+                    <a href="#/" style="display: inline-block!important; margin:1px!important;">首页</a>
+                    <a style="color:#e5e5e5;display: inline-block!important; width: auto!important;"> > > </a>
+                    <a href="#/" style="display: inline-block!important; margin:1px!important;">下一页</a>
                 </li>
             </ul>
         </div>
-
-
     </div>
 </div>
 
@@ -72,7 +64,7 @@
         <div class="footer-inner">
             <p>
                 (c) 2014 <a href="http://yangcong345.com">洋葱数学</a>
-                <br />
+                <br/>
                 Course Builder is based on
                 <a href="http://www.angularjs.org">AngularJS</a>,
                 <a href="http://getbootstrap.com">Bootstrap</a>,

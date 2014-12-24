@@ -70,12 +70,16 @@ module.exports = {
       'vendor/angular-animate/angular-animate.min.js',
       'vendor/angular-aria/angular-aria.min.js',
       'vendor/hammerjs/hammer.min.js',
-      'vendor/angular-material/angular-material.min.js'
+      'vendor/angular-material/angular-material.min.js',
+      'vendor/bootstrap-material-design/material.min.js',
+      'vendor/bootstrap-material-design/ripples.min.js'
     ],
     css: [
         'vendor/angular-material/angular-material.min.css'
     ],
     assets: [
+      'vendor/bootstrap-material-design/dist/fonts/*',
+      '!vendor/bootstrap-material-design/dist/fonts/*.txt'
     ]
   }
 };
