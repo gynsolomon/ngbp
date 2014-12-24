@@ -1,11 +1,11 @@
-<div layout="row" layout-align="center center">
+<div layout="row" layout-align="center center" ng-init="init()">
     <div ng-repeat="tab in tabs" style="margin-right: 10px" >
         <md-toolbar>
             <small class="md-toolbar-tools">
                 <span>{{tab.title}}</span>
             </small>
         </md-toolbar>
-        <md-content style="height: 500px;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5">
+        <md-content class="chapter-list" style="height: 500px;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
             <md-card ng-repeat="chapter in chapters">
                 <div layout="row" layout-align="center center">
                     <img ng-src="{{chapter.url}}" class="img-polaroid" ph-img="80x80" alt="chapter._id"/>

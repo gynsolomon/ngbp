@@ -62,10 +62,13 @@ module.exports = {
    */
   vendor_files: {
     js: [
+      'vendor/jquery/dist/jquery.min.js',
+      'vendor/jquery-ui/jquery-ui.min.js',
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
+      'vendor/angular-ui-sortable/sortable.min.js',
       'vendor/angular-ui-utils/modules/route/route.js',
       'vendor/angular-animate/angular-animate.min.js',
       'vendor/angular-aria/angular-aria.min.js',
@@ -78,6 +81,7 @@ module.exports = {
         'vendor/angular-material/angular-material.min.css'
     ],
     assets: [
+      'vendor/jquery/dist/jquery.min.map',
       'vendor/bootstrap-material-design/dist/fonts/*',
       '!vendor/bootstrap-material-design/dist/fonts/*.txt'
     ]
