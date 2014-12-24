@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">
-                洋葱数学
+                Course Builder
                 <small>
                     <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
                         v<%= version %>
@@ -40,8 +40,8 @@
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active">
                     <a href ui-sref="editor">
-                        <i class="fa fa-home"></i>
-                        课程编辑后台
+                        <i class="fa fa-hboome"></i>
+                        编辑
                     </a>
                 </li>
                 <li ui-sref-active="active">
@@ -51,19 +51,29 @@
                     </a>
                 </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="display: inline!important; padding: 0px">
+                    <a href="#/" style="color:blue;display: inline-block!important; margin:1px!important;">首页</a>
+                    <a style="color:#808080;display: inline-block!important; width: auto!important;"> > > </a>
+
+                    <a href="#/" style="color:blue;display: inline-block!important; margin:1px!important;">下一页</a>
+                </li>
+            </ul>
         </div>
+
+
     </div>
 </div>
 
 <div class="container" ui-view="main"></div>
 
-<!--<footer class="footer">
+<footer class="footer">
     <div class="container">
         <div class="footer-inner">
             <p>
                 (c) 2014 <a href="http://yangcong345.com">洋葱数学</a>
                 <br />
-                ycmath is based on
+                Course Builder is based on
                 <a href="http://www.angularjs.org">AngularJS</a>,
                 <a href="http://getbootstrap.com">Bootstrap</a>,
                 <a href="https://material.angularjs.org">Material Angular</a>,
@@ -73,6 +83,6 @@
             </p>
         </div>
     </div>
-</footer>-->
+</footer>
 </body>
 </html>
