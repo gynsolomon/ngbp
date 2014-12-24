@@ -1,6 +1,6 @@
 {
-  "name": "ng-boilerplate",
-  "version": "0.3.2",
+  "name": "ycmath",
+  "version": "2.0",
   "devDependencies": {
     "angular": "latest",
     "angular-mocks": "latest",
