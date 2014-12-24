@@ -2,7 +2,8 @@
  * Created by solomon on 14/12/24.
  */
 angular.module( 'ycmath.editor', [
-    'ui.router'
+    'ui.router',
+    'ngMaterial'
 ])
 
 .config(function config( $stateProvider ) {
