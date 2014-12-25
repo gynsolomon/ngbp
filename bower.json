@@ -11,7 +11,9 @@
     "angular-ui-sortable": "~0.13.1",
     "bootstrap-material-design": "~0.2.1",
     "restangular": "~1.4.0",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "ionicons": "~2.0.0",
+    "normalize.css": "~3.0.2"
   },
   "dependencies": {}
 }

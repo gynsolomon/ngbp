@@ -6,7 +6,8 @@ angular.module('ycmath.editor', [
     'ngMaterial',
     'placeholders',
     'ui.sortable',
-    'restangular'
+    'restangular',
+    'ng-mfb'
 ])
 
 .config(function config($stateProvider) {

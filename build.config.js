@@ -80,13 +80,15 @@ module.exports = {
       'vendor/restangular/dist/restangular.min.js'
     ],
     css: [
-        'vendor/angular-material/angular-material.min.css'
+        'vendor/angular-material/angular-material.min.css',
+        'vendor/normalize.css/normalize.css'
     ],
     assets: [
       'vendor/jquery/dist/jquery.min.map',
       'vendor/underscore/underscore-min.map',
       'vendor/bootstrap-material-design/dist/fonts/*',
-      '!vendor/bootstrap-material-design/dist/fonts/*.txt'
+      '!vendor/bootstrap-material-design/dist/fonts/*.txt',
+      'vendor/ionicons/fonts/*'
     ]
   }
 };
