@@ -5,7 +5,8 @@ angular.module('ycmath', [
     'templates-app',
     'templates-common',
     'ycmath.editor',
-    'ui.router'
+    'ui.router',
+    'restangular'
 ])
 .config(function myAppConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/editor');
