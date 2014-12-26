@@ -13,7 +13,11 @@
     <script type="text/javascript" src="<%= file %>"></script>
     <% }); %>
 </head>
-<body>
+<body style="background-image: url(assets/clouds.png);
+background-repeat: repeat-x;
+background-position: center 270px;
+background-attachment: fixed;
+background-color: #c8e6fa">
 <div class="container">
     <div class="navbar navbar-default">
         <div class="navbar-header">
@@ -53,10 +57,10 @@
 </div>
 
 <div class="container" ui-view="main"></div>
-
-<footer class="footer">
+<footer>
+    <hr/>
     <div class="container">
-        <div class="footer-inner">
+        <div>
             <p>
                 (c) 2014 <a href="http://yangcong345.com">洋葱数学</a>
                 <br/>
