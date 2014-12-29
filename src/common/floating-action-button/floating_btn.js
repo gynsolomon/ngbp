@@ -16,11 +16,12 @@
                 effect: '@',
                 label: '@',
                 resting: '@restingIcon',
-                active: '@activeIcon'
+                active: '@activeIcon',
+                activeAction: '&activeAction'
             },
             template: '<ul class="mfb-component--{{position}} mfb-{{effect}}">' +
             ' <li class="mfb-component__wrap">' +
-            '  <a href="" data-mfb-label="{{label}}" class="mfb-component__button--main">' +
+            '  <a href data-mfb-label="{{label}}" class="mfb-component__button--main" ng-click="activeAction()">' +
             '   <i class="mfb-component__main-icon--resting {{resting}}"></i>' +
             '   <i class="mfb-component__main-icon--active {{active}}"></i>' +
             '  </a>' +

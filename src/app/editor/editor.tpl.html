@@ -1,11 +1,11 @@
-<div layout="row" layout-align="center center" ng-init="init()">
-    <div ng-repeat="tab in tabs" style="margin-right: 10px" >
+<div layout="row" layout-align="center center" ng-init="init()" class="col-lg-10">
+    <div ng-repeat="tab in tabs" style="margin-right: 10px" class="col-lg-2">
         <md-toolbar>
             <small class="md-toolbar-tools">
                 <span>{{tab.title}}</span>
             </small>
         </md-toolbar>
-        <md-content class="chapter-list" style="height: 400px;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
+        <md-content class="chapter-list" style="height: 400px;width:100%;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
             <md-card ng-repeat="chapter in chapters">
                 <div layout="row" layout-align="center center">
                     <img ng-src="{{chapter.url}}" class="img-polaroid" ph-img="80x80" alt="chapter._id"/>
@@ -23,7 +23,8 @@
     </div>
 </div>
 
-<div mfb-menu position="br" effect="slidein" label="添加新章节" active-icon="ion-edit" resting-icon="ion-plus-round">
-    <a mfb-button icon="ion-images" label="切换背景图"></a>
-    <a mfb-button icon="ion-ios-paper-outline" label="意见反馈"></a>
+<div mfb-menu position="br" effect="slidein" label="添加新章节" active-icon="ion-edit" resting-icon="ion-plus-round"
+     active-action="showEditDialog($event)">
+    <!--<a mfb-button icon="ion-images" label="切换背景图"></a>
+    <a mfb-button icon="ion-ios-paper-outline" label="意见反馈"></a>-->
 </div>
