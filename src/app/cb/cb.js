@@ -18,7 +18,13 @@ angular.module('ycmath.cb', [
             url: '/editor',
             templateUrl: 'cb/partials/editor.tpl.html',
             controller: 'EditorCtrl',
-            children: [],
+            children: [
+                {
+                    name: 'test',
+                    url:'/test',
+                    templateUrl: 'cb/partials/editor.test.tpl.html'
+                }
+            ],
             data: {pageTitle: '章节编辑'}
         });
 

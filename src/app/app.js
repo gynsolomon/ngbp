@@ -5,8 +5,7 @@ angular.module('ycmath', [
     'templates-app',
     'templates-common',
     'ycmath.cb',
-    'ui.router',
-    'restangular'
+    'ui.router'
 ])
 .config(function myAppConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/cb');
