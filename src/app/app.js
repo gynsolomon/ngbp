@@ -8,10 +8,9 @@ angular.module('ycmath', [
     'ui.router'
 ])
 .config(function myAppConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/cb');
+    $urlRouterProvider.otherwise('/course-builder');
     $stateProvider.state('cb',{
-        url: '/cb',
-        controller: function($state){$state.go('cb.editor');},
+        url: '/course-builder',
         templateUrl: 'cb/cb.tpl.html',
         data:{pageTitle:':-)'}
     });
@@ -19,6 +18,10 @@ angular.module('ycmath', [
 
 .run(function run() {
 })
+
+.controller('CbCtrl',function($state){
+        $state.transitionTo('cb.editor');
+    })
 
 .controller('AppCtrl', function AppCtrl($scope, $location) {
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
