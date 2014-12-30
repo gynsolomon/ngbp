@@ -4,6 +4,7 @@
     <title ng-bind="pageTitle"></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="assets/favicon.ico" sizes="16x16">
 
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>"/>
@@ -14,62 +15,6 @@
     <% }); %>
 </head>
 <body>
-<nav>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <div class="navbar-brand">
-                <strong>Course Builder</strong>
-                <small>
-                    <a style="color:white" href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
-                        v<%= version %>
-                    </a>
-                </small>
-            </div>
-        </div>
-        <div class="collapse navbar-collapse" collapse="menuCollapsed">
-            <ul class="nav navbar-nav">
-                <li ui-sref-active="active">
-                    <a href ui-sref="editor">
-                        <i class="fa fa-hboome"></i>
-                        章节编辑
-                    </a>
-                </li>
-                <li ui-sref-active="active">
-                    <a href ui-sref="test">
-                        <i class="fa fa-info-circle"></i>
-                        教材转换
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li style="display: inline!important; padding: 0px">
-                    <a href="#/" style="display: inline-block!important; margin:1px!important;">首页</a>
-                    <a style="color:#e5e5e5;display: inline-block!important; width: auto!important;"> > > </a>
-                    <a href="#/" style="display: inline-block!important; margin:1px!important;">下一页</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container" ui-view="main"></div>
-<footer>
-    <hr/>
-    <div class="container">
-        <div>
-            <p>
-                (c) 2014 <a href="http://yangcong345.com">洋葱数学</a>
-                <br/>
-                Course Builder is based on
-                <a href="http://www.angularjs.org">AngularJS</a>,
-                <a href="http://getbootstrap.com">Bootstrap</a>,
-                <a href="https://material.angularjs.org">Material Angular</a>,
-                <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
-                and
-                <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.
-            </p>
-        </div>
-    </div>
-</footer>
+    <div ui-view></div>
 </body>
 </html>

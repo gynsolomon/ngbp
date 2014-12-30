@@ -1,25 +1,25 @@
 /**
  * Created by solomon on 14/12/24.
  */
-angular.module('ycmath.editor', [
+angular.module('ycmath.cb', [
     'ui.router',
     'ngMaterial',
     'placeholders',
     'ui.sortable',
     'restangular',
-    'ng-mfb'
+    'ng-mfb' // this is for floating action button
 ])
 
     .config(function config($stateProvider) {
-        $stateProvider.state('editor', {
+        $stateProvider.state('cb.editor', {
             url: '/editor',
-            views: {
-                "main": {
-                    controller: 'EditorCtrl',
-                    templateUrl: 'editor/editor.tpl.html'
-                }
-            },
-            data: {pageTitle: '课程编辑后台'}
+            controller: 'EditorCtrl',
+            templateUrl: 'cb/partials/editor.tpl.html',
+            data: {pageTitle: '章节编辑'}
+        }).state('cb.transfer',{
+            url: '/transfer',
+            template: '<h2>功能开发中，敬请期待</h2>',
+            data: {pageTitle: '教材转换'}
         });
     })
 
