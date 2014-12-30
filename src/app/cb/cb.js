@@ -3,6 +3,7 @@
  */
 angular.module('ycmath.cb', [
     'ui.router',
+    'ui.router.stateHelper',
     'ngMaterial',
     'placeholders',
     'ui.sortable',
@@ -10,13 +11,19 @@ angular.module('ycmath.cb', [
     'ng-mfb' // this is for floating action button
 ])
 
-    .config(function config($stateProvider) {
-        $stateProvider.state('cb.editor', {
+    .config(function config($stateProvider,stateHelperProvider) {
+
+        stateHelperProvider.setNestedState({
+            name: 'cb.editor',
             url: '/editor',
-            controller: 'EditorCtrl',
             templateUrl: 'cb/partials/editor.tpl.html',
+            controller: 'EditorCtrl',
+            children: [],
             data: {pageTitle: '章节编辑'}
-        }).state('cb.transfer',{
+        });
+
+
+        $stateProvider.state('cb.transfer',{
             url: '/transfer',
             template: '<h2>功能开发中，敬请期待</h2>',
             data: {pageTitle: '教材转换'}
