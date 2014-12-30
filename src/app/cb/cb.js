@@ -25,7 +25,13 @@ angular.module('ycmath.cb', [
                     templateUrl: 'cb/partials/editor.test.tpl.html'
                 }
             ],
-            data: {pageTitle: '章节编辑'}
+            data: {pageTitle: '章节编辑'},
+            resolve: {
+                chaptersObj: function ($http) {
+                    // $http returns a promise for the url data
+                    return $http({method: 'GET', url: 'http://localhost:3000/course/versions/548e512225f66d3ef492faf3/chapters'});
+                }
+            }
         });
 
 
@@ -36,19 +42,20 @@ angular.module('ycmath.cb', [
         });
     })
 
-    .controller('EditorCtrl', function EditorCtrl($scope, $mdDialog) {
-        $scope.chapters = [];
+    .controller('EditorCtrl', function EditorCtrl($scope, chaptersObj, $mdDialog) {
+        $scope.chapters = chaptersObj.data.chapters;
+        console.log($scope.chapters);
         $scope.tabs = [
-            {title: '新章节'},
-            {title: '已排期'},
-            {title: '未排期'},
-            {title: '已发布'}
+            {title: '新章节',filter:'new'},
+            {title: '已排期',filter:'scheduled'},
+            {title: '未排期',filter:'notScheduled'},
+            {title: '已发布',filter:'published'}
         ];
 
         $scope.sortableOptions = {
             "cursor": "move",
+            "axis":'y',
             "placeholder": 'chapter-sort',
-            "connectWith": '.chapter-list',
             start: function (event, ui) {
                 var placeholder = ui.placeholder;
                 var item = ui.item;
@@ -68,15 +75,6 @@ angular.module('ycmath.cb', [
                 item.css('transform', 'rotate(0deg)');
             }
         };
-
-        angular.element(document).ready(function () {
-            $('.chapter-list').bind("scroll", function (e) {
-                if ($(this).scrollLeft() > 1) {
-                    e.preventDefault();
-                    $(this).scrollLeft(0);
-                }
-            });
-        });
 
         $scope.showEditDialog = function (ev) {
             console.log('add new chapter');

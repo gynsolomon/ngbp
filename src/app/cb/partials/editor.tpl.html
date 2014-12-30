@@ -1,15 +1,16 @@
 <div ui-view></div>
-<div layout="row" layout-align="center center" ng-init="init()" class="col-lg-10">
-    <div ng-repeat="tab in tabs" style="margin-right: 10px" class="col-lg-2">
+<div layout="row" layout-align="center center" ng-init="init()">
+    <div ng-repeat="tab in tabs" style="margin-right: 10px">
         <md-toolbar>
             <small class="md-toolbar-tools">
                 <span>{{tab.title}}</span>
             </small>
         </md-toolbar>
-        <md-content class="chapter-list" style="height: 400px;width:100%;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
+        <md-content style="height: 400px;width:100%;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
             <md-card ng-repeat="chapter in chapters">
                 <div layout="row" layout-align="center center">
-                    <img ng-src="{{chapter.url}}" class="img-polaroid" ph-img="80x80" alt="chapter._id"/>
+                    <img ng-if="chapter.icon" style="width: 80px;height: 80px" ng-src="{{chapter.icon}}"/>
+                    <img ng-if="!chapter.icon" class="img-polaroid" ph-img="80x80" alt="chapter icon"/>
                     <div layout="column" layout-margin>
                         <h3>{{chapter.name}}</h3>
                         <div layout="row" layout-sm="column" layout-align="center center">
