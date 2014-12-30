@@ -46,9 +46,9 @@ angular.module('ycmath.cb', [
         $scope.chapters = chaptersObj.data.chapters;
         console.log($scope.chapters);
         $scope.tabs = [
-            {title: '新章节',filter:'new'},
-            {title: '已排期',filter:'scheduled'},
-            {title: '未排期',filter:'notScheduled'},
+            {title: '新章节',filter:'unpublished'},
+            {title: '已排期',filter:'prepared'},
+            //{title: '未排期',filter:'notScheduled'},
             {title: '已发布',filter:'published'}
         ];
 

@@ -6,8 +6,8 @@
                 <span>{{tab.title}}</span>
             </small>
         </md-toolbar>
-        <md-content style="height: 400px;width:100%;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
-            <md-card ng-repeat="chapter in chapters">
+        <md-content style="height: 400px;min-width:280px;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
+            <md-card ng-repeat="chapter in chapters | filter:{state:tab.filter}:true">
                 <div layout="row" layout-align="center center">
                     <img ng-if="chapter.icon" style="width: 80px;height: 80px" ng-src="{{chapter.icon}}"/>
                     <img ng-if="!chapter.icon" class="img-polaroid" ph-img="80x80" alt="chapter icon"/>
