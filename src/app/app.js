@@ -7,7 +7,9 @@ angular.module('ycmath', [
     'ycmath.cb',
     'ui.router'
 ])
-.config(function myAppConfig($stateProvider, $urlRouterProvider) {
+    .constant('HOST','http://localhost:3000') // have already configured cros
+
+    .config(function myAppConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/course-builder');
     $stateProvider.state('cb',{
         url: '/course-builder',
@@ -16,7 +18,8 @@ angular.module('ycmath', [
     });
 })
 
-.run(function run() {
+.run(function run($rootScope,HOST) {
+        $rootScope.HOST = HOST;
 })
 
 .controller('CbCtrl',function($state){

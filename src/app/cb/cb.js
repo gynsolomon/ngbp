@@ -12,7 +12,6 @@ angular.module('ycmath.cb', [
 ])
 
     .config(function config($stateProvider,stateHelperProvider) {
-
         stateHelperProvider.setNestedState({
             name: 'cb.editor',
             url: '/editor',
@@ -27,9 +26,9 @@ angular.module('ycmath.cb', [
             ],
             data: {pageTitle: '章节编辑'},
             resolve: {
-                chaptersObj: function ($http) {
-                    // $http returns a promise for the url data
-                    return $http({method: 'GET', url: 'http://localhost:3000/course/versions/548e512225f66d3ef492faf3/chapters'});
+                chaptersObj: function ($http,$rootScope) {
+                    // $rootScope.HOST is configured in app.js as a constant
+                    return $http({method: 'GET', url: $rootScope.HOST + '/course/versions/548e512225f66d3ef492faf3/chapters'});
                 }
             }
         });
