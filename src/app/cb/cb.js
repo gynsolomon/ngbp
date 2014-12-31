@@ -10,6 +10,18 @@ angular.module('ycmath.cb', [
     'restangular',
     'ng-mfb' // this is for floating action button
 ])
+    .constant('HOST','http://localhost:3000')
+    .constant('DEFAULT_PUBLISHER_ID','548e512225f66d3ef492faf3')
+
+    .config(function(RestangularProvider,HOST){
+        RestangularProvider.setBaseUrl(HOST);
+    })
+
+    .factory('CourseRestangular', function(Restangular,HOST) {
+        return Restangular.withConfig(function(RestangularConfigurer) {
+            RestangularConfigurer.setBaseUrl(HOST + '/course');
+        });
+    })
 
     .config(function config($stateProvider,stateHelperProvider) {
         stateHelperProvider.setNestedState({
@@ -26,13 +38,12 @@ angular.module('ycmath.cb', [
             ],
             data: {pageTitle: '章节编辑'},
             resolve: {
-                chaptersObj: function ($http,$rootScope) {
-                    // $rootScope.HOST is configured in app.js as a constant
-                    return $http({method: 'GET', url: $rootScope.HOST + '/course/versions/548e512225f66d3ef492faf3/chapters'});
+                defaultPublisher: function (CourseRestangular,Restangular,DEFAULT_PUBLISHER_ID) {
+                    var allChaptersUrl = CourseRestangular.one('versions',DEFAULT_PUBLISHER_ID).all('chapters').getRequestedUrl();
+                    return Restangular.oneUrl('chapters',allChaptersUrl).get();
                 }
             }
         });
-
 
         $stateProvider.state('cb.transfer',{
             url: '/transfer',
@@ -41,9 +52,8 @@ angular.module('ycmath.cb', [
         });
     })
 
-    .controller('EditorCtrl', function EditorCtrl($scope, chaptersObj, $mdDialog) {
-        $scope.chapters = chaptersObj.data.chapters;
-        console.log($scope.chapters);
+    .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog,Restangular) {
+        $scope.chapters = defaultPublisher.chapters;
         $scope.tabs = [
             {title: '新章节',filter:'unpublished'},
             {title: '已排期',filter:'prepared'},
@@ -94,7 +104,7 @@ angular.module('ycmath.cb', [
             });
         };
 
-        function DialogController($scope, $mdDialog) {
+        function DialogController($scope, $mdDialog, Restangular) {
 
             $scope.init = function(){
                 $scope.chapter = {name:'test'};
@@ -102,6 +112,8 @@ angular.module('ycmath.cb', [
 
             };
             $scope.saveNewChapter = function () {
+
+
                 $mdDialog.hide();
             };
             $scope.cancel = function () {
