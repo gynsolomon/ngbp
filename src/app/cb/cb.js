@@ -9,6 +9,8 @@ angular.module('ycmath.cb', [
     'ui.sortable',
     'ng-mfb' // this is for floating action button
 ])
+    .constant('HOST','http://localhost:3000')
+    .constant('DEFAULT_PUBLISHER_ID','548e512225f66d3ef492faf3')
 
     .config(function config($stateProvider,stateHelperProvider) {
         stateHelperProvider.setNestedState({
@@ -25,13 +27,12 @@ angular.module('ycmath.cb', [
             ],
             data: {pageTitle: '章节编辑'},
             resolve: {
-                chaptersObj: function ($http,$rootScope) {
-                    // $rootScope.HOST is configured in app.js as a constant
-                    return $http({method: 'GET', url: $rootScope.HOST + '/course/versions/548e512225f66d3ef492faf3/chapters'});
+                defaultPublisher: function ($http,$rootScope,DEFAULT_PUBLISHER_ID) {
+                    var allChaptersUrl = '/course/versions/' + DEFAULT_PUBLISHER_ID + '/chapters' ;
+                    return $http({method:'GET',url:$rootScope.HOST + allChaptersUrl});
                 }
             }
         });
-
 
         $stateProvider.state('cb.transfer',{
             url: '/transfer',
@@ -40,9 +41,8 @@ angular.module('ycmath.cb', [
         });
     })
 
-    .controller('EditorCtrl', function EditorCtrl($scope, chaptersObj, $mdDialog) {
-        $scope.chapters = chaptersObj.data.chapters;
-        console.log($scope.chapters);
+    .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog) {
+        $scope.chapters = defaultPublisher.data.chapters;
         $scope.tabs = [
             {title: '新章节',filter:'unpublished'},
             {title: '已排期',filter:'prepared'},
@@ -101,6 +101,8 @@ angular.module('ycmath.cb', [
 
             };
             $scope.saveNewChapter = function () {
+
+
                 $mdDialog.hide();
             };
             $scope.cancel = function () {
