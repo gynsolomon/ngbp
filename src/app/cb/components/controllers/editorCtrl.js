@@ -3,9 +3,7 @@
  */
 
 
-angular.module('ycmath.cb.controllers', [
-
-])
+angular.module('ycmath.cb')
     .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog) {
         $scope.chapters = defaultPublisher.data.chapters;
         $scope.tabs = [

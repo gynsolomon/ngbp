@@ -3,6 +3,6 @@
  */
 
 angular.module('ycmath.cb')
-    .controller('TestCtrl', function testCtrl () {
+.factory('Api',function($http){
 
     });

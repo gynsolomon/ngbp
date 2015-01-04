@@ -2,11 +2,9 @@
  * Created by solomon on 14/12/24.
  */
 angular.module('ycmath.cb', [
-    'ycmath.cb.controllers',
     'ui.router',
     'ui.router.stateHelper',
     'ngMaterial',
-    'ngResource',
     'placeholders',
     'ui.sortable',
     'ng-mfb' // this is for floating action button
@@ -40,9 +38,4 @@ angular.module('ycmath.cb', [
             template: '<h2>功能开发中，敬请期待</h2>',
             data: {pageTitle: '教材转换'}
         });
-    })
-
-    .config(['$resourceProvider', function($resourceProvider) {
-        // Don't strip trailing slashes from calculated URLs
-        $resourceProvider.defaults.stripTrailingSlashes = false;
-    }]);
+    });
