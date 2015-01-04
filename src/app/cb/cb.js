@@ -5,12 +5,12 @@ angular.module('ycmath.cb', [
     'ui.router',
     'ui.router.stateHelper',
     'ngMaterial',
+    'ngResource',
     'placeholders',
     'ui.sortable',
     'ng-mfb' // this is for floating action button
 ])
-    .constant('HOST','http://localhost:3000')
-    .constant('DEFAULT_PUBLISHER_ID','548e512225f66d3ef492faf3')
+    .value('DEFAULT_PUBLISHER_ID','548e512225f66d3ef492faf3')
 
     .config(function config($stateProvider,stateHelperProvider) {
         stateHelperProvider.setNestedState({
@@ -40,6 +40,11 @@ angular.module('ycmath.cb', [
             data: {pageTitle: '教材转换'}
         });
     })
+
+    .config(['$resourceProvider', function($resourceProvider) {
+        // Don't strip trailing slashes from calculated URLs
+        $resourceProvider.defaults.stripTrailingSlashes = false;
+    }])
 
     .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog) {
         $scope.chapters = defaultPublisher.data.chapters;
