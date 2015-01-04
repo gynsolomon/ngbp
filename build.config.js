@@ -77,8 +77,7 @@ module.exports = {
       'vendor/angular-material/angular-material.min.js',
       'vendor/bootstrap-material-design/material.min.js',
       'vendor/bootstrap-material-design/ripples.min.js',
-      'vendor/underscore/underscore-min.js',
-      'vendor/restangular/dist/restangular.min.js'
+      'vendor/underscore/underscore-min.js'
     ],
     css: [
         'vendor/angular-material/angular-material.min.css',

@@ -7,7 +7,6 @@ angular.module('ycmath.cb', [
     'ngMaterial',
     'placeholders',
     'ui.sortable',
-    'restangular',
     'ng-mfb' // this is for floating action button
 ])
 
