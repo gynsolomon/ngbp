@@ -65,6 +65,7 @@ module.exports = {
       'vendor/jquery/dist/jquery.min.js',
       'vendor/jquery-ui/jquery-ui.min.js',
       'vendor/angular/angular.js',
+      'vendor/angular-resource/angular-resource.min.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
@@ -86,6 +87,7 @@ module.exports = {
     assets: [
       'vendor/jquery/dist/jquery.min.map',
       'vendor/underscore/underscore-min.map',
+      'vendor/angular-resource/angular-resource.min.js.map',
       'vendor/bootstrap-material-design/dist/fonts/*',
       '!vendor/bootstrap-material-design/dist/fonts/*.txt',
       'vendor/ionicons/fonts/*'
