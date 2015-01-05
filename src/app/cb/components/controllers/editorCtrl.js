@@ -5,7 +5,7 @@
 
 angular.module('ycmath.cb')
     .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog) {
-        $scope.chapters = defaultPublisher.data.chapters;
+        $scope.chapters = defaultPublisher.chapters;
         $scope.tabs = [
             {title: '新章节', filter: 'unpublished'},
             {title: '已排期', filter: 'prepared'},
@@ -38,7 +38,6 @@ angular.module('ycmath.cb')
         };
 
         $scope.showEditDialog = function (ev) {
-            console.log('add new chapter');
             $mdDialog.show({
                 controller: DialogController,
                 template: '<md-dialog ng-init="init()">' +

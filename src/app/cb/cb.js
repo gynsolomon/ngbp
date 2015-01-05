@@ -9,7 +9,6 @@ angular.module('ycmath.cb', [
     'ui.sortable',
     'ng-mfb' // this is for floating action button
 ])
-    .value('defaultPublisherId','548e512225f66d3ef492faf3')
 
     .config(function config($stateProvider,stateHelperProvider) {
         stateHelperProvider.setNestedState({
@@ -26,9 +25,8 @@ angular.module('ycmath.cb', [
             ],
             data: {pageTitle: '章节编辑'},
             resolve: {
-                defaultPublisher: function ($http,$rootScope,defaultPublisherId) {
-                    var allChaptersUrl = '/course/versions/' + defaultPublisherId + '/chapters' ;
-                    return $http({method:'GET',url:$rootScope.HOST + allChaptersUrl});
+                defaultPublisher: function (Api) {
+                    return Api.getDefaultPublisher();
                 }
             }
         });
