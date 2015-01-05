@@ -4,7 +4,7 @@
 
 
 angular.module('ycmath.cb')
-    .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog) {
+    .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog, Api) {
         $scope.chapters = defaultPublisher.chapters;
         $scope.tabs = [
             {title: '新章节', filter: 'unpublished'},
@@ -54,7 +54,7 @@ angular.module('ycmath.cb')
             });
         };
 
-        function DialogController($scope, $mdDialog) {
+        function DialogController($scope, $mdDialog,Api) {
 
             $scope.init = function () {
                 $scope.chapter = {name: 'test'};
@@ -62,8 +62,9 @@ angular.module('ycmath.cb')
 
             };
             $scope.saveNewChapter = function () {
-
-
+                Api.postChapter($scope.chapter).then(function(data){
+                    console.log(data);
+                });
                 $mdDialog.hide();
             };
             $scope.cancel = function () {
