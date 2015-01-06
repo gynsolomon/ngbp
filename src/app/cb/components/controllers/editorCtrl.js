@@ -40,33 +40,34 @@ angular.module('ycmath.cb')
         $scope.showEditDialog = function (ev) {
             $mdDialog.show({
                 controller: DialogController,
-                template: '<md-dialog ng-init="init()">' +
-                '<md-content layout="row" layout-align="center center">' +
-                '<md-text-float id="newchapter" label="章节名称" ng-model="chapter.name"></md-text-float>' +
-                '<md-button class="md-raised md-primary" ng-click="saveNewChapter()">保存</md-button>' +
-                '</md-content>' +
-                '</md-dialog>',
-                targetEvent: ev
-            }).then(function (answer) {
-                $scope.alert = 'You said the information was "' + answer + '".';
-            }, function () {
-                $scope.alert = 'You cancelled the dialog.';
+                template:
+                    '<md-dialog>' +
+                        '<form>'+
+                            '<md-content layout="row" layout-align="center center">' +
+                                '<md-text-float label="章节名称" ng-model="chapter.name"></md-text-float>' +
+                                '<md-button ng-click="saveNewChapter()" type="submit" class="md-primary">保存</md-button>'+
+                            '</md-content>'+
+                        '</form>'+
+                    '</md-dialog>',
+                targetEvent: ev,
+                onComplete: init
             });
+
+            function init (scope, element, options){
+                // auto focus on chapter's name input area
+                element.find('input').focus();
+                scope.chapters = $scope.chapters;
+            }
         };
 
-        function DialogController($scope, $mdDialog,Api) {
-
-            $scope.init = function () {
-                $scope.chapter = {name: 'test'};
-                $('#newchapter').focus();
-
-            };
+        function DialogController($scope, $mdDialog, Api) {
             $scope.saveNewChapter = function () {
                 Api.postChapter($scope.chapter).then(function(data){
-                    console.log(data);
+                    $scope.chapters.push(data);
+                    $mdDialog.hide('OK');
                 });
-                $mdDialog.hide();
             };
+
             $scope.cancel = function () {
                 $mdDialog.cancel();
             };

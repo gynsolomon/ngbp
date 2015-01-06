@@ -3,9 +3,9 @@
  */
 
 angular.module('ycmath.cb')
-    .value('defaultPublisherId', '548e512225f66d3ef492faf3') // this is for 人教版
     .constant('HOST', 'http://localhost:3000') // server side has already configured cros
-    .constant('API_URL', {
+    .value('defaultPublisherId', '548e512225f66d3ef492faf3') // this is for 人教版
+    .value('API_URL', {
         getChapter:     '/course/versions/:courseVersionId/chapters', // with populate, actually we can just get default publisher
         postChapter:    '/chapters/course/version/:courseVersionId',
         putChapter:     '/chapters/:chapterId',
@@ -30,9 +30,9 @@ angular.module('ycmath.cb')
             var options = {
                 method: 'POST',
                 url: HOST + API_URL.postChapter.replace(':courseVersionId', defaultPublisherId),
-                data: data,
+                data: {chapter:data},
                 headers: {
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json;charset=utf8'
                 }
             };
 
