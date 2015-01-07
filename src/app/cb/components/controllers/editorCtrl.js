@@ -2,15 +2,14 @@
  * Created by solomon on 15/1/4.
  */
 
-
 angular.module('ycmath.cb')
     .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog, Api) {
         $scope.chapters = defaultPublisher.chapters;
         $scope.tabs = [
-            {title: '新章节', filter: 'unpublished'},
-            {title: '已排期', filter: 'prepared'},
-            //{title: '未排期',filter:'notScheduled'},
-            {title: '已发布', filter: 'published'}
+            {title: '新章节', filters: ['unpublished', 'offline']},
+            {title: '已排期', filters: ['prepared']},
+            //{title: '未排期',filters:['notScheduled']},
+            {title: '已发布', filters: ['published']}
         ];
 
         $scope.sortableOptions = {
@@ -40,20 +39,19 @@ angular.module('ycmath.cb')
         $scope.showEditDialog = function (ev) {
             $mdDialog.show({
                 controller: DialogController,
-                template:
-                    '<md-dialog>' +
-                        '<form>'+
-                            '<md-content layout="row" layout-align="center center">' +
-                                '<md-text-float label="章节名称" ng-model="chapter.name"></md-text-float>' +
-                                '<md-button ng-click="saveNewChapter()" type="submit" class="md-primary">保存</md-button>'+
-                            '</md-content>'+
-                        '</form>'+
-                    '</md-dialog>',
+                template: '<md-dialog>' +
+                '<form>' +
+                '<md-content layout="row" layout-align="center center">' +
+                '<md-text-float label="章节名称" ng-model="chapter.name"></md-text-float>' +
+                '<md-button ng-click="saveNewChapter()" type="submit" class="md-primary">保存</md-button>' +
+                '</md-content>' +
+                '</form>' +
+                '</md-dialog>',
                 targetEvent: ev,
                 onComplete: init
             });
 
-            function init (scope, element, options){
+            function init(scope, element, options) {
                 // auto focus on chapter's name input area
                 element.find('input').focus();
                 scope.chapters = $scope.chapters;
@@ -62,7 +60,7 @@ angular.module('ycmath.cb')
 
         function DialogController($scope, $mdDialog, Api) {
             $scope.saveNewChapter = function () {
-                Api.postChapter($scope.chapter).then(function(data){
+                Api.postChapter($scope.chapter).then(function (data) {
                     $scope.chapters.push(data);
                     $mdDialog.hide('OK');
                 });
@@ -73,5 +71,14 @@ angular.module('ycmath.cb')
             };
         }
 
+        $scope.changeChapterState = function (chapterId, newState) {
+            Api.updateChapter(chapterId, {state: newState}).then(function (data) {
+                _.find($scope.chapters, function (chapter) {
+                    if (chapter._id == chapterId) {
+                        chapter.state = newState;
+                    }
+                });
+            });
+        };
     });
 

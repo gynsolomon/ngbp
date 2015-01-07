@@ -6,18 +6,47 @@
                 <span>{{tab.title}}</span>
             </small>
         </md-toolbar>
-        <md-content style="height: 400px;min-width:280px;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;" ui-sortable="sortableOptions" ng-model="chapters">
-            <md-card ng-repeat="chapter in chapters | filter:{state:tab.filter}:true">
+        <md-content
+                style="height: 400px;min-width:280px;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;"
+                ui-sortable="sortableOptions" ng-model="chapters">
+            <md-card ng-repeat="chapter in chapters | stateFilter : tab.filters">
                 <div layout="row" layout-align="center center">
                     <img ng-if="chapter.icon" style="width: 80px;height: 80px" ng-src="{{chapter.icon}}"/>
                     <img ng-if="!chapter.icon" class="img-polaroid" ph-img="80x80" alt="chapter icon"/>
+
                     <div layout="column" layout-margin>
                         <h3>{{chapter.name}}</h3>
-                        <p>{{chapter._id}}</p>
-                        <div layout="row" layout-sm="column" layout-align="center center">
-                            <md-button class="md-raised" style="margin-right: 5px">编辑</md-button>
-                            <md-button class="md-raised md-primary" style="margin-right: 5px">发布</md-button>
-                            <md-button class="md-raised md-warn" style="margin-right: 5px">删除</md-button>
+                        <small>{{chapter._id}}</small>
+                        <br/>
+
+                        <div ng-if="tab.filters.indexOf('unpublished')>-1 || tab.filters.indexOf('offline')>-1 "
+                             layout="row" layout-sm="column"
+                             layout-align="center center">
+                            <md-button class="md-raised">编辑</md-button>
+                            <span flex></span>
+                            <md-button class="md-raised md-primary"
+                                       ng-click="changeChapterState(chapter._id,'prepared')">排期
+                            </md-button>
+                            <span flex></span>
+                            <md-button class="md-raised md-warn">删除</md-button>
+                        </div>
+                        <div ng-if="tab.filters.indexOf('prepared')>-1 " layout="row" layout-sm="column"
+                             layout-align="center center">
+                            <md-button class="md-raised">编辑</md-button>
+                            <span flex></span>
+                            <md-button class="md-raised md-primary"
+                                       ng-click="changeChapterState(chapter._id,'published')">发布
+                            </md-button>
+                            <span flex></span>
+                            <md-button class="md-raised md-warn">删除</md-button>
+                        </div>
+                        <div ng-if="tab.filters.indexOf('published')>-1 " layout="row" layout-sm="column"
+                             layout-align="center center">
+                            <md-button class="md-raised md-warn" ng-click="changeChapterState(chapter._id,'offline')">
+                                下线
+                            </md-button>
+                            <span flex="15"></span>
+                            <md-button class="md-raised md-primary">编辑</md-button>
                         </div>
                     </div>
                 </div>

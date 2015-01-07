@@ -30,7 +30,7 @@ angular.module('ycmath.cb')
             var options = {
                 method: 'POST',
                 url: HOST + API_URL.postChapter.replace(':courseVersionId', defaultPublisherId),
-                data: {chapter:data},
+                data: {chapter: data},
                 headers: {
                     'Content-Type':'application/json;charset=utf8'
                 }
@@ -39,10 +39,14 @@ angular.module('ycmath.cb')
             return customHttp(options);
         };
 
-        var updateChapter = function (chapterId) {
+        var updateChapter = function (chapterId, data) {
             var options = {
                 method: 'PUT',
-                url: HOST + API_URL.putChapter.replace(':chapterId', chapterId)
+                url: HOST + API_URL.putChapter.replace(':chapterId', chapterId),
+                data: {chapter: data},
+                headers: {
+                    'Content-Type':'application/json;charset=utf8'
+                }
             };
 
             return customHttp(options);
