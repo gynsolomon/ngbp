@@ -3,7 +3,7 @@
  */
 
 angular.module('ycmath.cb')
-    .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog, Api) {
+    .controller('EditorCtrl', function EditorCtrl($scope, defaultPublisher, $mdDialog, $state, Api) {
         $scope.chapters = defaultPublisher.chapters;
         $scope.tabs = [
             {title: '新章节', filters: ['unpublished', 'offline']},
@@ -79,6 +79,10 @@ angular.module('ycmath.cb')
                     }
                 });
             });
+        };
+
+        $scope.editChapter = function(chapterId){
+            $state.go('cb.editor.chapter.overview',{chapterId:chapterId});
         };
     });
 

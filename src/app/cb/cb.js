@@ -18,9 +18,17 @@ angular.module('ycmath.cb', [
             controller: 'EditorCtrl',
             children: [
                 {
-                    name: 'test',
-                    url: '/test',
-                    templateUrl: 'cb/partials/editor.test.tpl.html'
+                    name: 'chapter',
+                    url: '/chapter/{chapterId}',
+                    abstract: true,
+                    template: '<ui-view/>',
+                    children: [
+                        {
+                            name: 'overview',
+                            url: '/overview',
+                            template: '<h2>this is test for overview</h2>'
+                        }
+                    ]
                 }
             ],
             data: {pageTitle: '章节编辑'},

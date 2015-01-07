@@ -9,9 +9,9 @@ angular.module('ycmath', [
 ])
 
     .config(function myAppConfig($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/course-builder');
+        $urlRouterProvider.otherwise('/cb');
         $stateProvider.state('cb', {
-            url: '/course-builder',
+            url: '/cb',
             templateUrl: 'cb/cb.tpl.html',
             data: {pageTitle: ':-)'}
         });

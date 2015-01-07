@@ -1,4 +1,4 @@
-<div ui-view></div>
+<section ui-view>
 <div layout="row" layout-align="center center">
     <div ng-repeat="tab in tabs" style="margin-right: 10px">
         <md-toolbar>
@@ -6,9 +6,7 @@
                 <span>{{tab.title}}</span>
             </small>
         </md-toolbar>
-        <md-content
-                style="height: 400px;min-width:280px;border-right:solid 2px #e5e5e5;border-left:solid 2px #e5e5e5;float: left;"
-                ui-sortable="sortableOptions" ng-model="chapters">
+        <md-content class="chapter-list" ui-sortable="sortableOptions" ng-model="chapters">
             <md-card ng-repeat="chapter in chapters | stateFilter : tab.filters">
                 <div layout="row" layout-align="center center">
                     <img ng-if="chapter.icon" style="width: 80px;height: 80px" ng-src="{{chapter.icon}}"/>
@@ -22,7 +20,7 @@
                         <div ng-if="tab.filters.indexOf('unpublished')>-1 || tab.filters.indexOf('offline')>-1 "
                              layout="row" layout-sm="column"
                              layout-align="center center">
-                            <md-button class="md-raised">编辑</md-button>
+                            <md-button class="md-raised" ng-click="editChapter(chapter._id)">编辑</md-button>
                             <span flex></span>
                             <md-button class="md-raised md-primary"
                                        ng-click="changeChapterState(chapter._id,'prepared')">排期
@@ -60,4 +58,4 @@
     <!--<a mfb-button icon="ion-images" label="切换背景图"></a>
     <a mfb-button icon="ion-ios-paper-outline" label="意见反馈"></a>-->
 </div>
-
+</section>
