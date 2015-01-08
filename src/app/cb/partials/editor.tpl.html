@@ -1,59 +1,53 @@
-<section ui-view>
-<div layout="row" layout-align="center center">
-    <div ng-repeat="tab in tabs" style="margin-right: 10px">
+<section ui-view ng-init="init()">
+<div layout="row" layout-align="space-around center" layout-sm="column">
+    <div ng-repeat="tab in tabs">
         <md-toolbar>
             <small class="md-toolbar-tools">
                 <span>{{tab.title}}</span>
             </small>
         </md-toolbar>
-        <md-content class="chapter-list" ui-sortable="sortableOptions" ng-model="chapters">
-            <md-card ng-repeat="chapter in chapters | stateFilter : tab.filters">
-                <div layout="row" layout-align="center center">
-                    <img ng-if="chapter.icon" style="width: 80px;height: 80px" ng-src="{{chapter.icon}}"/>
-                    <img ng-if="!chapter.icon" class="img-polaroid" ph-img="80x80" alt="chapter icon"/>
+        <md-content class="chapter-list md-whiteframe-z1" ui-sortable="sortableOptions" ng-model="chapters">
+                <md-card ng-repeat="chapter in chapters | stateFilter : tab.filters">
+                    <div layout="row" layout-align="space-around center">
+                        <img ng-if="chapter.icon" style="width: 80px;height: 80px" ng-src="{{chapter.icon}}"/>
+                        <img ng-if="!chapter.icon" class="img-polaroid" ph-img="80x80" alt="chapter icon"/>
 
-                    <div layout="column" layout-margin>
-                        <h3>{{chapter.name}}</h3>
-                        <small>{{chapter._id}}</small>
-                        <br/>
-
-                        <div ng-if="tab.filters.indexOf('unpublished')>-1 || tab.filters.indexOf('offline')>-1 "
-                             layout="row" layout-sm="column"
-                             layout-align="center center">
-                            <md-button class="md-raised" ng-click="editChapter(chapter._id)">编辑</md-button>
-                            <span flex></span>
-                            <md-button class="md-raised md-primary"
-                                       ng-click="changeChapterState(chapter._id,'prepared')">排期
-                            </md-button>
-                            <span flex></span>
-                            <md-button class="md-raised md-warn">删除</md-button>
-                        </div>
-                        <div ng-if="tab.filters.indexOf('prepared')>-1 " layout="row" layout-sm="column"
-                             layout-align="center center">
-                            <md-button class="md-raised">编辑</md-button>
-                            <span flex></span>
-                            <md-button class="md-raised md-primary"
-                                       ng-click="changeChapterState(chapter._id,'published')">发布
-                            </md-button>
-                            <span flex></span>
-                            <md-button class="md-raised md-warn">删除</md-button>
-                        </div>
-                        <div ng-if="tab.filters.indexOf('published')>-1 " layout="row" layout-sm="column"
-                             layout-align="center center">
-                            <md-button class="md-raised md-warn" ng-click="changeChapterState(chapter._id,'offline')">
-                                下线
-                            </md-button>
-                            <span flex="15"></span>
-                            <md-button class="md-raised md-primary">编辑</md-button>
+                        <div layout="column" layout-align="space-around center">
+                            <h4>{{chapter.name}}</h4>
+                            <small>{{chapter._id}}</small>
+                            <br/>
+                            <div ng-if="tab.filters.indexOf('unpublished')>-1 || tab.filters.indexOf('offline')>-1 "
+                                 layout="row" layout-sm="column"
+                                 layout-align="space-around center">
+                                <md-button class="md-raised" ng-click="editChapter(chapter._id)">编辑</md-button>
+                                <md-button class="md-raised md-primary"
+                                           ng-click="changeChapterState(chapter._id,'prepared')">排期
+                                </md-button>
+                                <md-button class="md-raised md-warn">删除</md-button>
+                            </div>
+                            <div ng-if="tab.filters.indexOf('prepared')>-1 " layout="row" layout-sm="column"
+                                 layout-align="space-around center">
+                                <md-button class="md-raised">编辑</md-button>
+                                <md-button class="md-raised md-primary"
+                                           ng-click="changeChapterState(chapter._id,'published')">发布
+                                </md-button>
+                                <md-button class="md-raised md-warn">删除</md-button>
+                            </div>
+                            <div ng-if="tab.filters.indexOf('published')>-1 " layout="row" layout-sm="column"
+                                 layout-align="space-around center">
+                                <md-button class="md-raised md-warn" ng-click="changeChapterState(chapter._id,'offline')">
+                                    下线
+                                </md-button>
+                                <md-button class="md-raised md-primary">编辑</md-button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </md-card>
+                </md-card>
         </md-content>
     </div>
 </div>
 
-<div mfb-menu position="br" effect="slidein" label="添加新章节" active-icon="ion-edit" resting-icon="ion-plus-round"
+<div id="myAffix" mfb-menu position="br" effect="slidein" label="添加新章节" active-icon="ion-edit" resting-icon="ion-plus-round"
      active-action="showEditDialog($event)">
     <!--<a mfb-button icon="ion-images" label="切换背景图"></a>
     <a mfb-button icon="ion-ios-paper-outline" label="意见反馈"></a>-->

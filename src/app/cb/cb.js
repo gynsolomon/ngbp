@@ -21,12 +21,19 @@ angular.module('ycmath.cb', [
                     name: 'chapter',
                     url: '/chapter/{chapterId}',
                     abstract: true,
-                    template: '<ui-view/>',
+                    controller: 'ChapterCtrl',
+                    templateUrl: 'cb/partials/editor.chapter.tpl.html',
                     children: [
                         {
                             name: 'overview',
                             url: '/overview',
-                            template: '<h2>this is test for overview</h2>'
+                            controller:'ChapterOverviewCtrl',
+                            templateUrl: 'cb/partials/editor.chapter.overview.tpl.html'
+                        },
+                        {
+                            name: 'topics',
+                            url: '/topics',
+                            template: '<h2>this is test for topics</h2>'
                         }
                     ]
                 }

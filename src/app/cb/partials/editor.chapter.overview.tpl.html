@@ -1,0 +1,19 @@
+<md-content ng-init="init()" style="height: 400px">
+    <div layout="column" layout-align="center center">
+        <div layout="row" layout-align="center center">
+            <p>章节名</p>
+            <span flex="5"></span>
+            <md-text-float label="Name" ng-model="chapter.name" style="width:200px;">{{chapter.name}}</md-text-float>
+        </div>
+        <div layout="row">
+            <label for="chapter-desc">章节描述</label>
+
+            <textarea id="chapter-desc" rows="4" cols="50" ng-model="chapter.desc"></textarea>
+        </div>
+        <div>
+            <md-button class="md-raised md-primary" ng-click="uploadBimg()">上传图片</md-button>
+            <input id="chapter-bimg-input" type="file" style="display: none"/>
+            <p>{{filename}}</p>
+        </div>
+    </div>
+</md-content>
