@@ -36,16 +36,6 @@ angular.module('ycmath.cb')
                     item.css('transform', 'rotate(0deg)');
                 }
             };
-
-            //console.log('aa',angular.element('#myAffix'));
-            //angular.element('#myAffix').get(0).affix({
-            //    offset: {
-            //        top: 5,
-            //        bottom: function () {
-            //            return (this.bottom = angular.element('.footer').outerHeight(true));
-            //        }
-            //    }
-            //});
         };
 
         $scope.showEditDialog = function (ev) {

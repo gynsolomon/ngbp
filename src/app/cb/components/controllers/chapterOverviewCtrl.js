@@ -3,18 +3,13 @@
  */
 
 angular.module('ycmath.cb')
-    .controller('ChapterOverviewCtrl', function testCtrl($scope, $state, $stateParams) {
+    .controller('ChapterOverviewCtrl', function testCtrl($scope, $state, $stateParams, Api) {
         $scope.init = function () {
-            $scope.filename = '';
-            angular.element('#chapter-bimg-input').bind('change',function(ev){
-                var files = ev.target.files;
-                $scope.$apply(function(){
-                    $scope.filename = files[0].name;
-                });
-            });
         };
 
-        $scope.uploadBimg = function () {
-            angular.element('#chapter-bimg-input').click();
+        $scope.save = function () {
+            Api.updateChapter($scope.chapter._id,$scope.chapter).then(function(data){
+                console.log('succeed');
+            });
         };
     });
