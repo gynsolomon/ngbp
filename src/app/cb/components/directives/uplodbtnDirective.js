@@ -7,8 +7,11 @@ angular.module('ycmath.cb')
         return {
             templateUrl: 'cb/partials/directive.uploadbtn.tpl.html',
             transclude: true,
+            scope:{
+
+            },
             controller: function ($scope, $element, $attrs) {
-                $scope.selected = false;
+                $scope.showPgb = false;
                 $scope.upload = function () {
                     $element.find('input').click();
                 };
@@ -18,36 +21,9 @@ angular.module('ycmath.cb')
                     var files = ev.target.files;
                     $scope.$apply(function () {
                         $scope.filename = files[0].name;
-                        $scope.selected = true;
+                        $scope.showPgb = true;
                     });
                 });
-
-                this.getCurrentFileName = function () {
-                    return $scope.filename;
-                };
-
-                this.showPgb = function () {
-                    return $scope.showPgb;
-                };
             }
-        };
-    })
-
-    .directive('uploadPgb', function ($interval) {
-        return {
-            require: '^uploadBtn',
-            templateUrl: 'cb/partials/directive.uploadpgb.tpl.html',
-            link: function (scope, element, attrs, uploadCtrl) {
-                scope.showPgb = false;
-                scope.$watch('selected',function(newValue){
-                    scope.showPgb = newValue;
-                    $interval(function(){
-                        scope.showPgb = false;
-                    },3000);
-                });
-
-
-            }
-
         };
     });
