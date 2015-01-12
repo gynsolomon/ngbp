@@ -4,9 +4,10 @@
 angular.module('ycmath.cb', [
     'ui.router',
     'ui.router.stateHelper',
+    'ui.sortable',
+    'ui.bootstrap',
     'ngMaterial',
     'placeholders',
-    'ui.sortable',
     'ng-mfb' // this is for floating action button
 ])
 

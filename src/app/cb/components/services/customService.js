@@ -3,7 +3,7 @@
  */
 
 angular.module('ycmath.cb')
-    .factory('customHttp', function ($q, $http) {
+    .factory('customHttp', function ($q, $http, Util) {
         return function (options) {
             var deferred = $q.defer();
             $http(options)
@@ -13,6 +13,7 @@ angular.module('ycmath.cb')
                 .error(function (err, status, headers, config) {
                     deferred.reject(err);
                     console.error(status, err);
+                    Util.showNetworkErrorToast();
                 });
             return deferred.promise;
         };
