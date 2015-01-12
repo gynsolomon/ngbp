@@ -1,17 +1,20 @@
-<div layout="column" layout-align="start center">
-    <div layout="row" layout-align="space-around start">
-        <p>章节名</p>
-        <md-text-float label="Name" ng-model="chapter.name">{{chapter.name}}</md-text-float>
+<md-content class="md-whiteframe-z1" style="height:480px">
+    <div layout="column" layout-align="start center">
+        <div layout="row" layout-align="space-around start">
+            <p>章节名</p>
+            <md-text-float label="Name" ng-model="chapter.name">{{chapter.name}}</md-text-float>
+        </div>
+        <div layout="row" layout-align="space-around start">
+            <label>章节描述</label>
+            <textarea rows="4" cols="50" ng-model="chapter.desc"></textarea>
+        </div>
+        <div layout="row" layout-align="space-around start">
+            <label>章节封面</label>
+            <upload-btn>
+                <upload-pgb></upload-pgb>
+            </upload-btn>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
     </div>
-    <div layout="row" layout-align="space-around start">
-        <label>章节描述</label>
-        <textarea rows="4" cols="50" ng-model="chapter.desc"></textarea>
-    </div>
-    <div layout="row" layout-align="space-around start">
-        <label>章节封面</label>
-        <upload-btn>
-            <upload-pgb></upload-pgb>
-        </upload-btn>
-    </div>
-    <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
-</div>
+</md-content>
+

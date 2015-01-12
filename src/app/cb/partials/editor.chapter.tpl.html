@@ -1,4 +1,4 @@
-<div ng-controller="ChapterCtrl" ng-init="init()">
+<div ng-controller="ChapterCtrl" ng-init="init()" layout="column">
     <md-tabs class="md-accent" md-selected="data.selectedIndex">
         <md-tab id="tab1" aria-controls="tab1-content" md-on-select="goToOverview()" md-on-deselect="">
             章节信息
@@ -7,6 +7,5 @@
             课程内容
         </md-tab>
     </md-tabs>
-    <md-content class="md-whiteframe-z1" style="height: 480px" ui-view>
-    </md-content>
+    <div ui-view></div>
 </div>

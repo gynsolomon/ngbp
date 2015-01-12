@@ -62,6 +62,7 @@ angular.module('ycmath.cb')
 
         function DialogController($scope, $mdDialog, Api) {
             $scope.saveNewChapter = function () {
+                $scope.chapter.state = "unpublished";
                 Api.postChapter($scope.chapter).then(function (data) {
                     $scope.chapters.push(data);
                     $mdDialog.hide('OK');

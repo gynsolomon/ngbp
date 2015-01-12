@@ -27,7 +27,7 @@ angular.module('ycmath.cb')
         };
 
         $scope.goToTopics = function () {
-            $state.go('cb.editor.chapter.topics',{chapterId:$stateParams.chapterId});
+            $state.go('cb.editor.chapter.contents',{chapterId:$stateParams.chapterId});
 
         };
     });

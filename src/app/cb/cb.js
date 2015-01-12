@@ -32,9 +32,10 @@ angular.module('ycmath.cb', [
                             templateUrl: 'cb/partials/editor.chapter.overview.tpl.html'
                         },
                         {
-                            name: 'topics',
-                            url: '/topics',
-                            template: '<h2>this is test for topics</h2>'
+                            name: 'contents',
+                            url: '/contents',
+                            controller: 'ChapterContentsCtrl',
+                            templateUrl: 'cb/partials/editor.chapter.contents.tpl.html'
                         }
                     ]
                 }
