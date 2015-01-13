@@ -28,7 +28,7 @@ angular.module('ycmath.cb', [
                         {
                             name: 'overview',
                             url: '/overview',
-                            controller:'ChapterOverviewCtrl',
+                            controller: 'ChapterOverviewCtrl',
                             templateUrl: 'cb/partials/editor.chapter.overview.tpl.html'
                         },
                         {
@@ -37,11 +37,11 @@ angular.module('ycmath.cb', [
                             abstract: true,
                             template: '<ui-view/>',
                             resolve: {
-                                topicsInPopulate: function(Api,$stateParams){
+                                topicsInPopulate: function (Api, $stateParams) {
                                     return Api.getTopic($stateParams.chapterId);
                                 }
                             },
-                            children:[
+                            children: [
                                 {
                                     name: 'topics',
                                     url: '/topic',
@@ -52,7 +52,12 @@ angular.module('ycmath.cb', [
                                             name: 'list',
                                             url: '/:topicId',
                                             controller: 'TopicCtrl',
-                                            templateUrl: 'cb/partials/editor.chapter.contents.topic.tpl.html'
+                                            templateUrl: 'cb/partials/editor.chapter.contents.topic.tpl.html',
+                                            resolve: {
+                                                tasksInPopulate: function(Api, $stateParams) {
+                                                    return Api.getTask($stateParams.topicId);
+                                                }
+                                            }
                                         }
                                     ]
                                 }

@@ -13,7 +13,9 @@ angular.module('ycmath.cb')
         getTopic:       '/chapters/:chapterId/topics', // with populate, actually we can just get this chapter with topics
         postTopic:      '/topics/chapter/:chapterId',
         putTopic:       '/topics/:topicId',
-        deleteTopic:    '/chapters/:chapterId/topics/:topicId'
+        deleteTopic:    '/chapters/:chapterId/topics/:topicId',
+        getTask:        '/topics/:topicId/tasks',
+        postTask:       '/tasks/topic/:topicId'
     })
 
     .factory('Api', function (customHttp, HOST, API_URL, defaultPublisherId) {
@@ -95,6 +97,29 @@ angular.module('ycmath.cb')
 
             return customHttp(options);
         };
+
+        var getTask = function(topicId){
+            var options = {
+                method: 'GET',
+                url: HOST + API_URL.getTask.replace(':topicId', topicId)
+            };
+
+            return customHttp(options);
+        };
+
+        var postTask = function(topicId, data){
+            var options = {
+                method: 'POST',
+                url: HOST + API_URL.postTask.replace(':topicId', topicId),
+                data: {task: data},
+                headers: {
+                    'Content-Type':'application/json;charset=utf8'
+                }
+            };
+
+            return customHttp(options);
+        };
+
         return {
             getDefaultPublisher: getDefaultPublisher,
             postChapter: postChapter,
@@ -102,6 +127,8 @@ angular.module('ycmath.cb')
             deleteChapter: deleteChapter,
             getTopic: getTopic,
             postTopic: postTopic,
-            updateTopic: updateTopic
+            updateTopic: updateTopic,
+            getTask: getTask,
+            postTask: postTask
         };
     });

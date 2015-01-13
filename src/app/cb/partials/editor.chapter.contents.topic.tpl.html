@@ -1,4 +1,4 @@
-<section ng-init="init()" layout="row" layout-align="start center">
+<section ng-init="init()" layout="row" layout-align="start center" style="height: 480px">
     <div flex="75" style="height:100%" layout="column">
         <div layout="row" layout-align="start center" layout-margin>
             <label>是否解锁</label>
@@ -27,17 +27,10 @@
             <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
         </div>
     </div>
-    <div flex style="height:100%" layout="column">
-        <md-whiteframe class="md-whiteframe-z1" style="height: 50px" layout layout-align="center center">
-            <span><i class="ion-plus-circled"></i>&nbsp;&nbsp;基础</span>
-        </md-whiteframe>
-        <span style="height: 30px"></span>
-        <md-whiteframe class="md-whiteframe-z1" style="height: 50px" layout layout-align="center center">
-            <span><i class="ion-plus-circled"></i>&nbsp;&nbsp;挑战</span>
-        </md-whiteframe>
-        <span style="height: 30px"></span>
-        <md-whiteframe class="md-whiteframe-z1" style="height: 50px" layout layout-align="center center">
-            <span><i class="ion-plus-circled"></i>&nbsp;&nbsp;特训</span>
-        </md-whiteframe>
+    <div flex="25" style="height:100%;" layout="column" layout="start end" layout-margin>
+        <div ng-repeat="task in taskEnums" layout="column" layout="center center" layout-margin>
+            <add-element-btn id="task-btn-{{task.type}}"  btn-text="{{task.title}}" created="isTaskCreated(task)" action="addTask(task)"></add-element-btn>
+            <span style="height: 20px"></span>
+        </div>
     </div>
 </section>
