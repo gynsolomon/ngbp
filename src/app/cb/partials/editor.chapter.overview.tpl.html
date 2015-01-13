@@ -8,7 +8,7 @@
             <div layout="row" layout-align="start center" layout-margin>
                 <label>章节描述</label>
                 <span flex="10"></span>
-                <textarea rows="4" flex ng-model="chapter.desc"></textarea>
+                <textarea rows="4" style="max-height:180px" flex ng-model="chapter.desc"></textarea>
             </div>
             <div layout="row" layout-align="start center" layout-margin>
                 <label>章节封面</label>
@@ -34,7 +34,7 @@
                 <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
             </div>
         </div>
-        <div flex style="height: 100%; text-align:center;">
+        <div flex style="height: 100%;" layout="column" layout-align="start center">
             <video width="80%" height="80%" controls ng-src="http://yc-course-video.qiniudn.com/5392b064c48cc97c366bc478"></video>
         </div>
 </md-content>
