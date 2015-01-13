@@ -34,8 +34,29 @@ angular.module('ycmath.cb', [
                         {
                             name: 'contents',
                             url: '/contents',
-                            controller: 'ChapterContentsCtrl',
-                            templateUrl: 'cb/partials/editor.chapter.contents.tpl.html'
+                            abstract: true,
+                            template: '<ui-view/>',
+                            resolve: {
+                                topicsInPopulate: function(Api,$stateParams){
+                                    return Api.getTopic($stateParams.chapterId);
+                                }
+                            },
+                            children:[
+                                {
+                                    name: 'topics',
+                                    url: '/topic',
+                                    controller: 'ChapterContentsCtrl',
+                                    templateUrl: 'cb/partials/editor.chapter.contents.tpl.html',
+                                    children: [
+                                        {
+                                            name: 'list',
+                                            url: '/:topicId',
+                                            controller: 'TopicCtrl',
+                                            templateUrl: 'cb/partials/editor.chapter.contents.topic.tpl.html'
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }

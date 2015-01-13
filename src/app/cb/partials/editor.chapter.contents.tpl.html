@@ -1,22 +1,20 @@
-<div layout="row" layout-align="start center" style="height: 480px">
+<div layout="row" layout-align="start center" style="height: 480px" ng-init="init()">
     <div class="well" flex="25" style="height:100%">
-
         <md-subheader>
             {{chapter.name}}
         </md-subheader>
-        <span flex></span>
-            <tabset vertical="true" type="pills">
-                <tab heading="Vertical 1">Vertical content 1</tab>
-                <tab heading="Vertical 2">Vertical content 2</tab>
-            </tabset>
-            <md-button class="md-raised md-primary" ng-click="addNewTopic()">
-                <i class="ion-plus-circled"></i>&nbsp;&nbsp;知识点
-            </md-button>
-    </div>
-    <div class="well" flex style="height:100%">
 
+        <tabset vertical="true" type="pills">
+            <tab ng-repeat="topic in topics" heading="{{topic._id}}" id="topic-{{topic._id}}" ui-sref="cb.editor.chapter.contents.topics.list({topicId:topic._id})">
+                {{$index}}
+            </tab>
+        </tabset>
+
+        <md-button class="md-raised md-primary" ng-click="addNewTopic()">
+            <i class="ion-plus-circled"></i>&nbsp;&nbsp;知识点
+        </md-button>
+    </div>
+    <div ui-view class="well" flex style="height:100%">
     </div>
 </div>
-
-
 
