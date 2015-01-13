@@ -1,8 +1,43 @@
-<section ng-init="init()">
-    <md-text-float label="知识点名称" ng-model="topic.name">{{topic.name}}</md-text-float>
-    <md-switch ng-model="topic.requirement">
-         : {{ topic.requirement}}
-    </md-switch>
-    <h2>{{topic._id}}</h2>
-    <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
+<section ng-init="init()" layout="row" layout-align="start center">
+    <div flex="75" style="height:100%" layout="column">
+        <div layout="row" layout-align="start center" layout-margin>
+            <label>是否解锁</label>
+            <span flex="10"></span>
+            <md-switch ng-model="topic.requirement">
+            </md-switch>
+        </div>
+        <div layout="row" layout-align="start center" layout-margin>
+            <label>知识点名称</label>
+            <span flex="10"></span>
+            <md-text-float label="Name" ng-model="topic.name">{{topic.name}}</md-text-float>
+        </div>
+        <div layout="row" layout-align="start center" layout-margin>
+            <label>知识点描述</label>
+            <span flex="10"></span>
+            <textarea rows="4" cols="30" style="max-height:180px" flex ng-model="topic.desc"></textarea>
+        </div>
+        <div layout="row" layout-align="start center" layout-margin>
+            <label>知识点图标</label>
+            <span flex="10"></span>
+            <upload-btn>
+                <upload-pgb></upload-pgb>
+            </upload-btn>
+        </div>
+        <div layout="row" layout-align="start center" layout-margin>
+            <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
+        </div>
+    </div>
+    <div flex style="height:100%" layout="column">
+        <md-whiteframe class="md-whiteframe-z1" style="height: 50px" layout layout-align="center center">
+            <span><i class="ion-plus-circled"></i>&nbsp;&nbsp;基础</span>
+        </md-whiteframe>
+        <span style="height: 30px"></span>
+        <md-whiteframe class="md-whiteframe-z1" style="height: 50px" layout layout-align="center center">
+            <span><i class="ion-plus-circled"></i>&nbsp;&nbsp;挑战</span>
+        </md-whiteframe>
+        <span style="height: 30px"></span>
+        <md-whiteframe class="md-whiteframe-z1" style="height: 50px" layout layout-align="center center">
+            <span><i class="ion-plus-circled"></i>&nbsp;&nbsp;特训</span>
+        </md-whiteframe>
+    </div>
 </section>
