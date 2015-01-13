@@ -1,3 +1,8 @@
 <section ng-init="init()">
+    <md-text-float label="知识点名称" ng-model="topic.name">{{topic.name}}</md-text-float>
+    <md-switch ng-model="topic.requirement">
+         : {{ topic.requirement}}
+    </md-switch>
     <h2>{{topic._id}}</h2>
+    <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
 </section>

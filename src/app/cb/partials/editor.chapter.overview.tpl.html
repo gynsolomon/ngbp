@@ -1,20 +1,41 @@
-<md-content class="md-whiteframe-z1" style="height:480px">
-    <div layout="column" layout-align="start center">
-        <div layout="row" layout-align="space-around start">
-            <p>章节名</p>
-            <md-text-float label="Name" ng-model="chapter.name">{{chapter.name}}</md-text-float>
+<md-content class="well" style="height:480px" layout="row" layout-align="space-between start">
+        <div flex="50" style="height:100%" layout="column" layout-align=" center space-around">
+            <div layout="row" layout-align="start center" layout-margin>
+                <p>章节名称</p>
+                <span flex="10"></span>
+                <md-text-float label="Name" ng-model="chapter.name">{{chapter.name}}</md-text-float>
+            </div>
+            <div layout="row" layout-align="start center" layout-margin>
+                <label>章节描述</label>
+                <span flex="10"></span>
+                <textarea rows="4" flex ng-model="chapter.desc"></textarea>
+            </div>
+            <div layout="row" layout-align="start center" layout-margin>
+                <label>章节封面</label>
+                <span flex="10"></span>
+                <upload-btn>
+                    <upload-pgb></upload-pgb>
+                </upload-btn>
+            </div>
+            <div layout="row" layout-align="start center" layout-margin>
+                <label>引入视频</label>
+                <span flex="10"></span>
+                <div class="btn-group" dropdown>
+                    <md-button md-no-ink class="md-raised dropdown-toggle" dropdown-toggle>
+                         选择视频文件<span class="caret"></span>
+                    </md-button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                    </ul>
+                </div>
+            </div>
+            <span flex="10"></span>
+            <div layout="row" layout-align="center center">
+                <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
+            </div>
         </div>
-        <div layout="row" layout-align="space-around start">
-            <label>章节描述</label>
-            <textarea rows="4" cols="50" ng-model="chapter.desc"></textarea>
+        <div flex style="height: 100%; text-align:center;">
+            <video width="80%" height="80%" controls ng-src="http://yc-course-video.qiniudn.com/5392b064c48cc97c366bc478"></video>
         </div>
-        <div layout="row" layout-align="space-around start">
-            <label>章节封面</label>
-            <upload-btn>
-                <upload-pgb></upload-pgb>
-            </upload-btn>
-        </div>
-        <md-button class="md-raised md-primary" ng-click="save()">保存</md-button>
-    </div>
 </md-content>
 

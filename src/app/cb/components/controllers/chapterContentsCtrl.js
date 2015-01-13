@@ -6,12 +6,10 @@ angular.module('ycmath.cb')
 
         $scope.init = function() {
             $scope.topics = topicsInPopulate.topics;
-            $scope.exampleTopic = {"name": "example", _id: 'example'};
-
-            var firstTopic = $scope.topics[0];
-            if(firstTopic){
-                $state.go('cb.editor.chapter.contents.topics.list',{topicId:firstTopic._id});
+            if($scope.topics.length === 0){
+                $scope.topics.push({"name": "example", _id: 'example'});
             }
+            $state.go('cb.editor.chapter.contents.topics.list',{topicId:$scope.topics[0]._id});
         };
 
         $scope.save = function () {
@@ -21,9 +19,8 @@ angular.module('ycmath.cb')
         };
 
         $scope.addNewTopic = function () {
-            Api.postTopic($scope.chapter._id, {name: "ceshi topic"}).then(function (data) {
-                Util.showSaveSucceedToast();
-                console.log(data);
+            Api.postTopic(topicsInPopulate._id, {name: "ceshi topic"}).then(function (data) {
+                $scope.topics.push(data);
             });
         };
     });

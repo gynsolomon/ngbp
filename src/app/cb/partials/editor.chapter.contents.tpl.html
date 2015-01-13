@@ -5,7 +5,7 @@
         </md-subheader>
 
         <tabset vertical="true" type="pills">
-            <tab ng-repeat="topic in topics" heading="{{topic._id}}" id="topic-{{topic._id}}" ui-sref="cb.editor.chapter.contents.topics.list({topicId:topic._id})">
+            <tab ng-repeat="topic in topics" heading="{{topic.name}}" id="topic-{{topic._id}}" ui-sref="cb.editor.chapter.contents.topics.list({topicId:topic._id})">
                 {{$index}}
             </tab>
         </tabset>

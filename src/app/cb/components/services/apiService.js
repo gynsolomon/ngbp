@@ -83,12 +83,25 @@ angular.module('ycmath.cb')
             return customHttp(options);
         };
 
+        var updateTopic = function (topicId, data) {
+            var options = {
+                method: 'PUT',
+                url: HOST + API_URL.putTopic.replace(':topicId', topicId),
+                data: {topic: data},
+                headers: {
+                    'Content-Type':'application/json;charset=utf8'
+                }
+            };
+
+            return customHttp(options);
+        };
         return {
             getDefaultPublisher: getDefaultPublisher,
             postChapter: postChapter,
             updateChapter: updateChapter,
             deleteChapter: deleteChapter,
             getTopic: getTopic,
-            postTopic: postTopic
+            postTopic: postTopic,
+            updateTopic: updateTopic
         };
     });

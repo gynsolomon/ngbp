@@ -13,9 +13,9 @@ angular.module('ycmath.cb')
             });
         };
 
-        //$scope.save = function () {
-        //    Api.updateChapter($scope.chapter._id, $scope.chapter).then(function (data) {
-        //        Util.showSaveSucceedToast();
-        //    });
-        //};
+        $scope.save = function () {
+            Api.updateTopic($scope.topic._id, $scope.topic).then(function (data) {
+                Util.showSaveSucceedToast();
+            });
+        };
     });
